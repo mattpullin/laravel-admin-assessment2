@@ -31,10 +31,10 @@
                         <a class="nav-link" href="/">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Posts</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
                     </li>
                     <!-- Authentication Links -->
                     @guest
@@ -77,6 +77,12 @@
     {{-- Page Content --}}
     <main class="py-4">
         <div class="container">
+            @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
             @yield('content')
         </div>
     </main>

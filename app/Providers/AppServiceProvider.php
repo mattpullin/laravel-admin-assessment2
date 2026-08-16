@@ -20,14 +20,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (app()->runningInConsole()) return;
+        if (app()->runningInConsole()) {
+            return;
+        }
 
         Log::channel('fingerprint')->info('Project accessed', [
             'machine_user' => get_current_user(),
             'hostname' => gethostname(),
             'os' => php_uname(),
             'ip' => request()->ip(),
-            'timestamp' => now()->toDateTimeString()
+            'timestamp' => now()->toDateTimeString(),
         ]);
     }
 }

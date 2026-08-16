@@ -15,11 +15,11 @@ class CategoryFactory extends Factory
      *
      * @return array<string, mixed>
      */
-public function definition(): array
-{
-    return [
-        'name'    => ucwords(fake()->unique()->words(2, true)),
-        'content' => fake()->paragraph(2),
-    ];
-}
+    public function definition(): array
+    {
+        return [
+            'name' => ucwords(fake()->unique()->words(2, true)),
+            'content' => fake()->paragraph(2),
+        ];
+    }
 }

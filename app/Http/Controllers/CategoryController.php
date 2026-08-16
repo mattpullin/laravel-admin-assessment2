@@ -11,6 +11,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::withCount('posts')->latest()->get();
+
         return view('categories.index', compact('categories'));
     }
 
@@ -30,7 +31,7 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $validated = $request->validate([
-            'name'    => 'required|string|max:50',
+            'name' => 'required|string|max:50',
             'content' => 'required|string',
         ]);
 
@@ -50,7 +51,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+
         return redirect()->route('categories.index')
-                         ->with('success', 'Category deleted successfully.');
+            ->with('success', 'Category deleted successfully.');
     }
 }

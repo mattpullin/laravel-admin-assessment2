@@ -5,7 +5,6 @@ GitHub repository: https://github.com/mattpullin/laravel-admin-assessment2
 
 Approach
 
-
 I started with the provided template and reviewed it to see what was included.  I then set up a new GitHub repo so i could commit after each major stage. I ran the composer and php artisan ui commands, keeping the template's existing layout and views, then icreated the MySQL database with the required naming format. I then configured the .env, ran migrations and seeded the two users, admin and user. 
 
 I proceeded to then build out the category model, migration, factory and seeder before the post, this was because posts has a foreign key to categories and the migrations run in timestamp order. I used foreign key constraints on the user_id and category_id rather than plain integers, so the relationships exist at the database level. I then defined the relationships in the models, Post belongsTo Category and User, Category hasMany Posts. I created dedicated CategorySeeder and PostSeeder classes called from DatabaseSeeder as i missed this in asessment 1, i then seeded the 5 categories and 10 posts with random categories. I then restricted the login to admin only by overriding the credentials in the LoginController so that admin is part of the login check, this meant that user@example.com fails authentication. I set up the admin route group with the admin prefix and authorised the middleware covering both post and category CRUD routes so the redirected correctly.
